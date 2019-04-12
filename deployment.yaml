@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: hello-v1
+spec:
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: hello 
+        version: v1
+    spec:
+      containers:
+      - name: hello
+        image: gcr.io/google-samples/kubernetes-bootcamp:v1
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-v2
+spec:
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: hello 
+        version: v2
+    spec:
+      containers:
+      - name: hello
+        image: jocatalin/kubernetes-bootcamp:v2
+        ports:
+        - containerPort: 8080
