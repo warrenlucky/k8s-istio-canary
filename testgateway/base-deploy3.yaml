@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-v3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-v3
+      version: v3
+  template:
+    metadata:
+      labels:
+        app: myapp-v3
+        version: v3
+        service: myapp
+    spec:
+      containers:
+      - name: myapp-v3
+        image: ikubernetes/myapp:v3
+        ports:
+        - containerPort: 80
